@@ -1,1 +1,2 @@
-# Apuntes_dyc
+# Apuntes de clases de Dinámica y Control
+
