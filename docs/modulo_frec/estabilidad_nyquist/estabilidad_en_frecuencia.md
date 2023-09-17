@@ -226,6 +226,14 @@ $$
 G(s)=\frac{1}{(s+1)^2}
 $$
 
+```{figure} est_fig7_0.png
+:height: 700px
+:name: est_fig7_0
+:align : center
+
+Curva de Nyquist en el plano-s de $G(s)$
+```
+
 1. Dibujamos un diagrama de Bode de la función de lazo $L(s)= kG(s)$, en este caso es suficiente con un Bode asintótico.
 
 ```{figure} est_fig7.png
@@ -246,7 +254,7 @@ Lugar de las raíces asintótico de $G(s)$
 Lugar de las raíces asintótico de $G(s)$
 ```
 
-3. Para este problema no es necesario evaluar el cierre porque se une en infinito.
+3. En este caso el diagrama de Nyquist es cerrado por lo que no es necesario evaluar el cierre por infinito. Observar que todos los puntos de $\mathscr{C}_2$ se mapean a cero del diagrama de Nyquist. $G(\mathscr{C}_1)$ con $s=\rho e^{-j\theta}$ con $\rho \longrightarrow \infty$.
 4. Contamos las vueltas alrededor de -1 y los polos en $\mathbb{C}^+$ a lazo abierto, es decir de $L(s)$
 
 $$
@@ -272,37 +280,59 @@ No hay polos en el RHP, por lo que el sistema es estable para cualquier valor de
 Lugar de las raíces asintótico de $G(s)$
 ```
 
+Notar que con ganancias $k<0$ el sistema se hace inestable con un polo en el semi-plano derecho.
+
 +++
 
 ### Otro ejemplo: Con cierre por $\infty$
 
-En este caso analizaremos un sistema en el que hay que cerrar el diagrama de Nyquist por el infinito de la función
+En este caso analizaremos un sistema en el que hay que cerrar el diagrama de Nyquist por el infinito de la función:
 
 $$
 G(s) = \frac{1}{s(s+1)}
 $$
+
+Los diagramas de Nyquist cierran por $\infty$ cuando hay singularidades sobre el eje-$j\omega$, en estos casos hay definir de que lado esta cada singularidad, están incluidas en $\mathbb{C}_+$ o en $\mathbb{C}_-$, para este ejemplo, el polo en cero lo excluimos de $\mathbb{C}_+$ por lo que $P=0$
 
 ```{figure} est_fig10.png
 :height: 700px
 :name: est_fig10
 :align : center
 
-Bode asintótico de $G(s)$
+Curva de Nyquist en el plano-s de $G(s)= \frac{1}{s(s+1)}$
 ```
+
+Comenzamos haciendo un Bode asintótico para dibujar el Nyquist para frecuencias $\omega >0$, es decir que van entre $0_+ < \omega < +\infty$ y el simétrico de frecuencias negativas $0_- < \omega < -\infty$
 
 ```{figure} est_fig11.png
 :height: 700px
 :name: est_fig11
 :align : center
 
-Lugar de las raíces asintótico de $G(s)$
+Bode asintótico de $G(s)= \frac{1}{s(s+1)}$
 ```
 
-Dibujamos la parte del Nyquist para frecuencias positivas $\omega>0$ a partir del Bode, y el simétrico para frecuencias negativas.
+Con el Bode anterior dibujamos el mapeo de $G(\mathscr{C}_1)$
 
 ```{figure} est_fig12.png
 :height: 700px
 :name: est_fig12
+:align : center
+
+Nyquist de $G(\mathscr{C}_1)$
+```
+
+El mapeo de $G(\mathscr{C}_2)$ donde $\mathscr{C}_2: s=\rho e^{j\theta} \text{ con } \rho \longrightarrow \infty \text{ y } -\frac{\pi}{2}<\theta<\frac{\pi}{2}$ \ pasando por $\theta = 0$ son puntos que van a parar al 0 del diagrama de Nyquist.
+
+$$
+G(s)= \lim_{\rho \rightarrow \infty}\frac{1}{\rho e^{j\theta}(\rho e^{j\theta}+1)}\approx \lim_{\rho \rightarrow \infty} \frac{1}{\rho} e^{-j\theta}
+$$
+
+Agregamos a lo que dibujamos para frecuencias positivas $\omega>0$ a partir del Bode, y el simétrico para frecuencias negativas, es decir $\omega<0$.
+
+```{figure} est_fig13.png
+:height: 700px
+:name: est_fig13
 :align : center
 
 Nyquist de $G(s)$ sin cerrar
@@ -329,21 +359,31 @@ De lo anterior con $\rho \longrightarrow 0$ tenemos que el módulo del mapeo tie
 |  45       | -45                 |
 |  90       | -90                 |
 
-```{figure} est_fig13.png
+```{figure} est_fig14.png
 :height: 700px
-:name: est_fig13
+:name: est_fig14
 :align : center
 
 Nyquist de $G(s)$ cerrado
 ```
 
-Final mente con el diagrama cerrado podemos, contamos la vueltas al -1 y los polos de $G(s)$ en el RHP y calculamos la estabilidad del sistema:
+Finalmente con el diagrama cerrado podemos, contamos la vueltas al -1 y los polos de $G(s)$ en el RHP y calculamos la estabilidad del sistema:
 
 $$
 \begin{matrix}
-N=0 & \text{ y } & P=0 & \Longrightarrow & Z=0 ~~ \forall k \text{( siempre es estable)}
+N=0 & \text{ y } & P=0 & \Longrightarrow & Z=0 ~~ \forall k>0 \text{( siempre es estable)}
 \end{matrix}
 $$
+
+Validamos lo anterior haciendo el lugar de las raíces asintótico para $k>0$. En este caso el sistema tiene dos asíntotas con centro de asíntota $\sigma_a = -0.5$ y ángulos de asíntota $\theta_a = \pm \pi/2$. Con lo que el asintótico queda de la forma:
+
+```{figure} est_fig15.png
+:height: 700px
+:name: est_fig15
+:align : center
+
+Lugar de las raíces asintótico de $G(s)= \frac{1}{s(s+1)}$ con $k>0$
+```
 
 Un detalle del gráfico, **"que no es relevante para determinar la estabilidad"**, que suele aparecer al dibujar el diagrama de Nyquist con alguna herramienta de simulación. Cuando la frecuencia es muy grande la curva de Nyquist no se hace asintótica al eje $j\omega$ en realidad para este ejemplo, se hace asintótica al eje -1.
 
@@ -351,12 +391,46 @@ $$
 \lim_{\omega \rightarrow 0^+} G(\omega)=\lim_{\omega \rightarrow 0^+}\bigg(\frac{-1}{\omega^2+1}-j\frac{1}{\omega(\omega^2+1)} \bigg)= -1
 $$
 
-```{figure} est_fig14.png
+```{figure} est_fig16.png
 :height: 700px
-:name: est_fig14
+:name: est_fig16
 :align : center
 
 Asíntota de Nyquist
+```
+
+Todavía podríamos hacernos algunas preguntas respectos de este problema. ¿Cómo cierra el Nyquist si incluimos el polo en la curva que encierra el RHP? y ¿Qué sucede con la estabilidad para $k<0$?
+
+Al incluir el polo en cero dentro de la curva que encierra el RHP, ahora los polos de $G(s)$ en RHP son $P=1$, realizamos el Nyquist para ese caso y contamos las vueltas a -1, por lo que $N=-1$, con lo que $Z=N+P=0$ esto es para todo $k>0$.
+
+```{figure} est_fig16_1.png
+:height: 700px
+:name: est_fig16_1
+:align : center
+
+Nyquist cuando la curva de Nyquist contiene el polo en cero
+```
+
+La estabilidad para $k<0$ se puede analizar de dos formas, por un lado se puede hacer el Nyquist para esa condición (rotando 180° el diagrama) como se muestra en la figura siguiente y analizar las vueltas a -1 del sistema.
+
+```{figure} est_fig16_2.png
+:height: 500px
+:name: est_fig16_2
+:align : center
+
+Nyquist de $k<0$ y la curva de Nyquist no contiene el polo en cero.
+```
+
+Para este caso $P=0$ y $N=1$ para todo valor de $k<0$ con lo que $Z=N+P =1 $ por lo que el sistema es siempre inestable con un polo en RHP.
+
+Por otro lado, lo que suele ser mas práctico, es plantear "cambiar la escala del eje real" reemplazando el punto -1 por el $-\frac{1}{k}$, Notar que para analizar la estabilidad estamos evaluando la ecuación característica el sistema, pero ahora con $k$ variable, es decir $1+kL(s)=0$, por lo que es lo mismo que ver $L(s)=-\frac{1}{k}$. Cuando $k>0$ se mueve en el eje real negativo y cuando $k<0$ el punto se mueve en el eje real positivo, de esta forma dibujamos el Nyquist para $k=1$ y luego movemos el punto $-\frac{1}{k}$ como se muestra en la figura siguiente.
+
+```{figure} est_fig16_3.png
+:height: 700px
+:name: est_fig16_3
+:align : center
+
+Análisis de estabilidad en el punto $-\frac{1}{k}$ para todo valor de $k$.
 ```
 
 +++
@@ -376,9 +450,9 @@ Es el cambio de fase a lazo abierto cuando la ganancia del sistema es 1 en valor
 
 Gráficamente es:
 
-```{figure} est_fig15.png
+```{figure} est_fig17.png
 :height: 700px
-:name: est_fig15
+:name: est_fig17
 :align : center
 
 Margenes de estabilidad
@@ -399,7 +473,18 @@ $$
 para encontrar el margen de ganancia hay que determinar donde corta el Nyquist el eje real, esto es
 
 $$
-L(j\omega)=\left.\frac{6}{(s^2+2s+2)(s+2)}\right|_{s\rightarrow j\omega}=\frac{6[4(1-j\omega)-j\omega(6-\omega^2)]}{16(1-\omega^2)^2+\omega^2(6-\omega^2)^2}
+L(j\omega) = 
+\left.\frac{6}{(s^2+2s+2)(s+2)}\right|_{s\rightarrow j\omega}
+=
+\frac{6[4(1-\omega^2)-j\omega(6-\omega^2)]}{16(1-\omega^2)^2+\omega^2(6-\omega^2)^2}
+$$
+
+es decir,
+
+$$
+L(j\omega) =
+\frac{6[4(1-\omega^2)]}{16(1-\omega^2)^2+\omega^2(6-\omega^2)^2}
+-j\frac{6[\omega(6-\omega^2)]}{16(1-\omega^2)^2+\omega^2(6-\omega^2)^2}
 $$
 
 cuando $\mathbb{I}m = 0 \Longrightarrow \omega=\sqrt{6} rad/s$ entonces $\mathbb{R}e=-0.3 \Longrightarrow $ la ganancia puede ser incrementada (multiplicar) hasta 3.33 unidades antes de que el sistema se haga inestable
@@ -408,7 +493,7 @@ $$
 G_M = 20\log{3.33}= 10.45 dB
 $$
 
-El margen de fase ocurre cuando $|L(s)|=1$ para esto con la  ayuda del software de cálculo se puede hallar la frecuencia $\omega=\omega_c$ (corte por $0dB$), que para este caso es:
+El margen de fase ocurre cuando $|L(j\omega_c)|=1$ para esto con la  ayuda del software de cálculo se puede hallar la frecuencia $\omega=\omega_c$ (corte por $0dB$), que para este caso es:
 
 $$
 |L(\omega)|=1 \Longrightarrow \omega_c=1.253 rad/s
@@ -424,9 +509,9 @@ $$
 
 Gráficamente en el diagrama de Bode los margenes de estabilidad, el margen de ganancia y el margen de fase se indican como muestra la figura siguiente:
 
-```{figure} est_fig16.png
+```{figure} est_fig18.png
 :height: 700px
-:name: est_fig16
+:name: est_fig18
 :align : center
 
 Margenes de estabilidad en el diagrama de Bode
