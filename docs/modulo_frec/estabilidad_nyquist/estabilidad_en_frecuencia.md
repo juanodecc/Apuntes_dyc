@@ -5,7 +5,7 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.13.7
+    jupytext_version: 1.15.2
 kernelspec:
   display_name: Python 3 (ipykernel)
   language: python
@@ -19,10 +19,11 @@ kernelspec:
 Considerando el sistema a lazo cerrado
 
 ```{figure} est_fig1.png
-:height: 700px
-:name: est_fig1
-:align : center
-
+---
+height: 150px
+name: est_fig1
+align : center
+---
 Diagrama de Nyquist de $L(j\omega)$
 ```
 
@@ -59,7 +60,7 @@ $$
 \end{matrix}
 $$
 
-Esto es, cuando cortan más de una vez el eje $||_dB=0$. Para despejar dudas es recomendable hacer un diagrama del lugar de las raíces y verificar la estabilidad, o es posible despejar las dudas al hacer un tratamiento más riguroso usando el `criterio de estabilidad de Nyquist`.
+Esto es, cuando cortan más de una vez el eje $||_{dB}=0$. Para despejar dudas es recomendable hacer un diagrama del lugar de las raíces y verificar la estabilidad, o es posible despejar las dudas al hacer un tratamiento más riguroso usando el `criterio de estabilidad de Nyquist`.
 
 +++
 
@@ -158,6 +159,7 @@ N-P \not= 0
 $$
 
 donde
+
 $$
 \begin{matrix}
 N = \text{ número de ceros de }L(s)\text{ en el interior de }\mathscr{C}\\
