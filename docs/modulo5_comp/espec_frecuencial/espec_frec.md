@@ -138,7 +138,24 @@ Los objetivos de control son:
 
 ## Especificaciones sobre las sensibilidades
 
-## Especificaciones sobre la función de transferencia a lazo abierto
+Los objetivos de control parecen ser contradictorios, ya que al ser $S+T=1$, si la sensibilidad $S$ debe ser pequeña $|S|<<1$, es decir $|L|>>1$, entonces $|T|=\frac{L}{1+L}$ no puede ser también pequeña $|T|<<1$, esto genera una relación de compromiso para $|L|$.
+
+* La solución de la paradoja está en que las frecuencias características de cada señal exógena son diferentes (en el mejor de los casos).
+* Las señales de referencia $r$ y las perturbaciones $l$ y $d$ son típicamente de baja frecuencia , $\omega \leq \omega_1$.
+* las señales de ruido en los sensores $\eta$ son de alta frecuencia, $\omega \geq \omega_2$.
+
+Por tanto: $|S|<<1$ en una banda de frecuencias $(0, \omega_1]$ y $|T|<<1$ en una banda de frecuencias $[\omega_2,\infty)$, con $\omega_1<\omega_2$.
+
+La atenuación se especifica utilizando las cantidades $M_a$ y $M_b$.
+
+$$
+|S|<M_b<<1 \text{ para }\omega \leq \omega_1\text{, } |T|<M_a<<1 \text{ para } \omega \geq \omega_2  
+$$
+
+Las frecuencias $\omega_1$ y $\omega_2$, y los factores de atenuación $M_a$ y $M_b$ dependen de cada problema especifico.
+
+## Especificaciones sobre la función de transferencia a lazo abierto $L(s)$
+
 
 ## Diseño de controladores en el dominio frecuencial
 
