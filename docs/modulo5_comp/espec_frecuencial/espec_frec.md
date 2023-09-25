@@ -110,6 +110,20 @@ Margenes de fase y ganancia de sistema
 
 ## Objetivos de un sistema de control
 
+Sea el sistema de control de la figura {ref}`espec_frec_fig1`. Las relaciones entre todas las variables importantes del sistema son:
+
+$$
+y=Tr+G_dSd-T\eta+SGl
+$$
+$$
+e=Sr-G_dSd+T\eta-SGl
+$$
+$$
+u=SKr-G_dSKd-SK\eta-Sl
+$$
+
+siendo $T=\frac{L}{1+L}$, la sensibilidad complementaria. Además $L$ es estrictamente propia, es decir $\lim_{\omega\rightarrow \infty}|L(j\omega)|=0$ por lo que  $\lim_{\omega\rightarrow \infty}|S(j\omega)|=1$ y $\lim_{\omega\rightarrow \infty}|T(j\omega)|=0$.
+
 ## Especificaciones sobre las sensibilidades
 
 ## Especificaciones sobre la función de transferencia a lazo abierto
