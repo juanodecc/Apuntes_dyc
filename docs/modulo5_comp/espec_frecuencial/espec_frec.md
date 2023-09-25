@@ -124,6 +124,18 @@ $$
 
 siendo $T=\frac{L}{1+L}$, la sensibilidad complementaria. Además $L$ es estrictamente propia, es decir $\lim_{\omega\rightarrow \infty}|L(j\omega)|=0$ por lo que  $\lim_{\omega\rightarrow \infty}|S(j\omega)|=1$ y $\lim_{\omega\rightarrow \infty}|T(j\omega)|=0$.
 
+Las relaciones anteriores quedan completamente determinadas por las seis funciones de transferencias de sensibilidad: $S$, $T$,$G_dS$, $SG$, $SK$ y  $G_dSK$, que deben diseñarse para atenuar el efecto de las señales exógenas $r$, $l$, $d$ y $\eta$ sobre el lazo de control.
+
+Los objetivos de control son:
+
+1. Las sensibilidades $S$, $T$,$G_dS$, $SG$, $SK$ y  $G_dSK$ deben ser estables. (estabilidad interna)
+1. Para conseguir seguimiento asintótico perfecto (es decir $y=r$), en ausencia de perturbaciones, ante escalones en la referencia $r$, $|T(j\omega)|= 1$ para bajas frecuencias es decir $L(j\omega)$ debe ser grande.
+1. Ademas el efecto de las perturbaciones $l$, $d$ y $\eta$ sobre el lazo de control debe ser pequeño, para ello:
+
+* $|S|$ debe ser pequeño en la banda de frecuencias de las perturbaciones $d$, para no deteriorar la señal de salida $y$. Es decir $|L|$ debe ser grande para dicha zona de frecuencias.
+* Para no deteriorar el error de seguimiento $r-y$, $S$ debe ser pequeño en las banda de frecuencias de $r$ y $d$, $|T|$ debe ser pequeño para las frecuencias características del ruido $\eta$ y $|SG|$ debe ser pequeño en la banda de frecuencias de la perturbación $l$.
+* Finalmente, para que el esfuerzo de control $u$ sea moderado, $|SK|$ debe ser moderado en aquellas frecuencias donde $|T|>1$. En caso contrario podrían saturarse los actuadores que generan $u$.
+
 ## Especificaciones sobre las sensibilidades
 
 ## Especificaciones sobre la función de transferencia a lazo abierto
