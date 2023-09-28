@@ -61,10 +61,10 @@ se cumple que: $S+T=1, \Rightarrow  T=1-S$
 
 ## Control "perfecto"
 
-El error de un sistema de control, definido como $e=r-y$ es
+El error de un sistema de control como el de la {ref}`espec_frec_fig1`, definido como $e=r-y$ es
 
 $$
-e=r-y=Sr-G_dSd+T\eta
+e=r-y=S(s)r-G_d(s)S(s)d+T(s)\eta
 $$
 
 Control perfecto significa que el error $e \approx 0$, para que esto suceda, es necesario que $S\approx 0$ para que los términos $Sr\approx 0$ y $G_dSd\approx 0$ y $T \approx 0$ para que $T\eta \approx 0$, esto es posible solamente para distintas frecuencias, ya que $S+T=1$. Por lo tanto, si las referencias $r$ y perturbaciones $d$ se encuentran en la zona de frecuencias donde $S \approx 0$ y el ruido $\eta$ en la zona de frecuencias donde $T\approx 0$, es posible logra control perfecto.
@@ -79,20 +79,30 @@ Características sobre $S$:
 * _Pico de resonancia_ ($M_p^S$): Es la máxima amplificación de ganancia.
 * _Frecuencia de pico_ ($\omega_p^S$): Es la frecuencia a la que ocurre el pico resonante.
 
+```{figure} espec_frec_fig2a.png
+---
+height: 150px
+alt : Modulo de la función de transferencia S(s)
+name: espec_frec_fig2a
+align : center
+---
+Módulo de la función de sensibilidad $S(j\omega)$
+```
+
 Características sobre $T$:
 
 * _Ancho de Banda_ ($\omega_{BW}^T$): Establece la banda de frecuencias donde las referencias $r$ que pueden ser seguidas, ($0,\omega_{BW}^T$).
 * _Pico de resonancia_ ($M_p^T$): Es la máxima amplificación de ganancia.
 * _Frecuencia de pico_ ($\omega_p^T$): Es la frecuencia a la que ocurre el pico resonante.
 
-```{figure} espec_frec_fig2.png
+```{figure} espec_frec_fig2b.png
 ---
 height: 150px
-alt : Módulo de la funciones de sensibilidad S y T
-name: espec_frec_fig2
+alt : Módulo de la funciones de sensibilidad complementaria T
+name: espec_frec_fig2b
 align : center
 ---
-Módulo del Bode de $S$ y $T$
+Módulo de la función de sensibilidad complementaria $T(j\omega)$
 ```
 
 ## Características de lazo abierto
@@ -105,7 +115,7 @@ Las principales características que se obtienen de la función de transferencia
 
 La pendiente de $|L|$ en el entorno de la frecuencia de corte $\omega_c$ no debe ser muy elevada para que los margenes de estabilidad sean razonables.
 
-```{figure} espec_frec_fig3.png
+```{figure}  espec_frec_fig3.png
 ---
 height: 150px
 alt : Margenes de fase y de ganancia en el diagrama de Bode de la función de lazo L
