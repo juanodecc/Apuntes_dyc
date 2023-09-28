@@ -19,9 +19,15 @@ kernelspec:
 Sea el sistema de control de la {ref}`espec_frec_fig1`. Su función de transferencia de lazo es $L=GK$ y las relaciones de lazo cerrado son:
 
 $$
-e=S (r-d Gd)
-u=S K (r-d)
-y=Gd S d+T r
+e=S(s) [r-G_d(s) d] - T(s)\eta
+$$
+
+$$
+u=S(s) K(s) [r-G_d(s)d-\eta]
+$$
+
+$$
+y=G_d(s) S(s) d+T(s) r - T(s)\eta
 $$
 
 ```{figure} espec_frec_fig1.png
@@ -35,13 +41,14 @@ Sistema realimentado genérico
 ```
 
 Las dos funciones de transferencia más importantes son:
-La sensibilidad $S$: Es la función de transferencia entre la entrada de referencia $r$ y el error $e$ (en ausencia de perturbaciones). También es la función de transferencia entre la perturbación $d$ y la salida $y$ con $G_d=1$ cuando la referencia $r$ es cero.
+
+**La sensibilidad $S(s)$:** Es la función de transferencia entre la entrada de referencia $r$ y el error $e$ (en ausencia de perturbaciones). También es la función de transferencia entre la perturbación $d$ y la salida $y$ con $G_d=1$ cuando la referencia $r$ es cero.
 
 $$
 S=\frac{1}{1+L}
 $$
 
-La sensibilidad complementaria T: Es la función de transferencia entre la referencia $r$ y la salida $y$ (en ausencia de perturbaciones).
+**La sensibilidad complementaria $T(s)$:** Es la función de transferencia entre la referencia $r$ y la salida $y$ (en ausencia de perturbaciones).
 
 $$
 T=\frac{L}{1+L}
@@ -50,9 +57,9 @@ $$
 se cumple que: $S+T=1, \Rightarrow  T=1-S$
 
 * Las referencias, perturbaciones y ruidos que afectan a un sistema de control tienen una frecuencia característica, que no suele ser fácil representar o modelar.
-* La capacidad de rechazar perturbaciones o de seguir referencias puede especificarse mejor en el dominio frecuencial que en el plano-s.
+* La capacidad de rechazar perturbaciones o de seguir referencias puede especificarse mejor en el dominio frecuencial que en el plano-$s$.
 
-## Control perfecto
+## Control "perfecto"
 
 El error de un sistema de control, definido como $e=r-y$ es
 
@@ -68,13 +75,13 @@ La sensibilidades $S$ y $T$ especifican la capacidad de seguimiento de referenci
 
 Características sobre $S$:
 
-* _Ancho de Banda_ ($\omega_b^S$): Establece la banda de frecuencias donde las perturbaciones $d$ no se atenúan, ($\omega_b^S, \infty$).
+* _Ancho de Banda_ ($\omega_{BW}^S$): Establece la banda de frecuencias donde las perturbaciones $d$ no se atenúan, ($\omega_{BW}^S, \infty$).
 * _Pico de resonancia_ ($M_p^S$): Es la máxima amplificación de ganancia.
 * _Frecuencia de pico_ ($\omega_p^S$): Es la frecuencia a la que ocurre el pico resonante.
 
 Características sobre $T$:
 
-* _Ancho de Banda_ ($\omega_b^T$): Establece la banda de frecuencias donde las referencias $r$ que pueden ser seguidas, ($0,\omega_b^T$).
+* _Ancho de Banda_ ($\omega_{BW}^T$): Establece la banda de frecuencias donde las referencias $r$ que pueden ser seguidas, ($0,\omega_{BW}^T$).
 * _Pico de resonancia_ ($M_p^T$): Es la máxima amplificación de ganancia.
 * _Frecuencia de pico_ ($\omega_p^T$): Es la frecuencia a la que ocurre el pico resonante.
 
@@ -181,7 +188,7 @@ $$
 En media frecuencia (Zona C): Se busca buena estabilidad relativa.
 
 $$
-\omega_1 < \omega_c \approx \omega_b^T<\omega_2 \text{, con } |L(j\omega_c)|=1(=0dB)
+\omega_1 < \omega_c \approx \omega_{BW}^T<\omega_2 \text{, con } |L(j\omega_c)|=1(=0dB)
 $$
 
 En términos de los márgenes de estabilidad es necesario margen de fase $MF>50°$, margen de ganancia $MG>12dB$ y margen de sensibilidad o radio de estabilidad $RS\geq 0.5$, por lo que, $máx|S(j\omega)|<1/RS=2$.
@@ -189,3 +196,18 @@ En términos de los márgenes de estabilidad es necesario margen de fase $MF>50�
 La pendiente de $|L(j\omega)|$ en las proximidades de la frecuencia de corte no debe ser superior a $-20dB/dec$ para conseguir estabilidad relativa.
 
 ## Diseño de controladores en el dominio frecuencial
+
+Especificaciones de diseño:
+
+* Estabilidad
+* Ancho de Banda: Se especifican los anchos de banda deseados 
+* Atenuación de perturbaciones:Se especifican los factores de atenuación $-M_a$ y $-M_b$ y las frecuencias $\omega_1$ y $\omega_2$ que van a caracterizar las zonas de las frecuencia.
+* Esfuerzo de control limitado: Se especifica $0<M_c \approx 0$ de forma que $|SK|<M_c$ para $\omega < \omega_{BW}^T$.
+
+Procedimiento para obtener el controlado K(s).
+
+* Se elige la frecuencia de cruce de ganancia (frecuencia de corte) $\omega_{BW}^S<\omega_c<\omega_{BW}^T$
+* Se elige una función de transferencia de lazo abierto $L$ estrictamente propia que contenga todos los polos y ceros de la planta G que no tienen parte real negativa y tal que $|L|$ satisface
+
+
+
