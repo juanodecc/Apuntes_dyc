@@ -130,14 +130,24 @@ Margenes de fase y ganancia de sistema
 Sea el sistema de control de la figura {ref}`espec_frec_fig1`. Las relaciones entre todas las variables importantes del sistema son:
 
 $$
-y=Tr+G_dSd-T\eta+SGl
+y=T(s)r+G_d(s)S(s)d-T(s)\eta+S(s)G(s)l
 $$
 $$
-e=Sr-G_dSd+T\eta-SGl
+e=S(s)r-G_d(s)S(s)d+T(s)\eta-S(s)G(s)l
 $$
 $$
-u=SKr-G_dSKd-SK\eta-Sl
+u=S(s)K(s)r-G_d(s)S(s)K(s)d-S(s)K(s)\eta-S(s)l
 $$
+
+```{figure}  espec_frec_fig4.png
+---
+height: 150px
+alt : sistema de control genérico
+name: espec_frec_fig4
+align : center
+---
+sistema de control genérico
+```
 
 siendo $T=\frac{L}{1+L}$, la sensibilidad complementaria. Además $L$ es estrictamente propia, es decir $\lim_{\omega\rightarrow \infty}|L(j\omega)|=0$ por lo que  $\lim_{\omega\rightarrow \infty}|S(j\omega)|=1$ y $\lim_{\omega\rightarrow \infty}|T(j\omega)|=0$.
 
@@ -183,19 +193,19 @@ $$
 \text{Siendo } T=\frac{L}{1+L} \text{, } |T|<<1   \Rightarrow |L|<<1 \text{ y } |T|\approx |L|
 $$
 
-En baja frecuencia (Zona B): Atenuación de perturbaciones de proceso.
+**En baja frecuencia (Zona B):** Atenuación de perturbaciones de proceso.
 
 $$
 \omega \leq \omega_1 \text{ : } |S(j\omega)|<-M_b \Rightarrow |L(j\omega)|>M_b
 $$
 
-En alta frecuencia (Zona A): Atenuación ruido en los sensores.
+**En alta frecuencia (Zona A):** Atenuación ruido en los sensores.
 
 $$
 \omega \geq \omega_2 \text{ : } |T(j\omega)|<-M_a \Rightarrow |L(j\omega)|<-M_a
 $$
 
-En media frecuencia (Zona C): Se busca buena estabilidad relativa.
+**En media frecuencia (Zona C):** Se busca buena estabilidad relativa.
 
 $$
 \omega_1 < \omega_c \approx \omega_{BW}^T<\omega_2 \text{, con } |L(j\omega_c)|=1(=0dB)
