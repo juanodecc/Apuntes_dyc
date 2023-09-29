@@ -193,6 +193,16 @@ $$
 \text{Siendo } T=\frac{L}{1+L} \text{, } |T|<<1   \Rightarrow |L|<<1 \text{ y } |T|\approx |L|
 $$
 
+```{figure}  espec_frec_fig5.png
+---
+height: 150px
+alt : zonas de frecuencia para L(s)
+name: espec_frec_fig5
+align : center
+---
+Forma para $L(s)$ loop-shaping
+```
+
 **En baja frecuencia (Zona B):** Atenuación de perturbaciones de proceso.
 
 $$
@@ -219,15 +229,12 @@ La pendiente de $|L(j\omega)|$ en las proximidades de la frecuencia de corte no 
 
 Especificaciones de diseño:
 
-* Estabilidad
-* Ancho de Banda: Se especifican los anchos de banda deseados 
-* Atenuación de perturbaciones:Se especifican los factores de atenuación $-M_a$ y $-M_b$ y las frecuencias $\omega_1$ y $\omega_2$ que van a caracterizar las zonas de las frecuencia.
-* Esfuerzo de control limitado: Se especifica $0<M_c \approx 0$ de forma que $|SK|<M_c$ para $\omega < \omega_{BW}^T$.
+* Estabilidad: Se especifican los margenes mínimos de fase, ganancia y sensibilidad. (de no tener requerimientos claros, se puede usar la recomendación anterior como punto de partida deseable)
+* Ancho de Banda: Se especifican los anchos de banda deseados para la sensibilidad $S$ y $T$. (Como punto de partida definir $\omega_{BW}^2 \approx \omega_c$)
+* Atenuación de perturbaciones:Se especifican los factores de atenuación $-M_a$ y $-M_b$ y las frecuencias $\omega_1$ y $\omega_2$ que van a caracterizar las zonas de las frecuencia. (Esto no es trivial, hay que conocer muy bien el ruido que se desea atenuar y las perturbaciones que hay que rechazar)
+* Esfuerzo de control limitado: Se especifica $0<M_c \approx 0$ de forma que $|SK|<M_c$ para $\omega < \omega_{BW}^T$. (Para esto hay que conocer el actuador que se pretende usar)
 
 Procedimiento para obtener el controlado K(s).
 
 * Se elige la frecuencia de cruce de ganancia (frecuencia de corte) $\omega_{BW}^S<\omega_c<\omega_{BW}^T$
 * Se elige una función de transferencia de lazo abierto $L$ estrictamente propia que contenga todos los polos y ceros de la planta G que no tienen parte real negativa y tal que $|L|$ satisface
-
-
-
